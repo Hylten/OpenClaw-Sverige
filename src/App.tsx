@@ -505,13 +505,13 @@ function useRoute() {
 
 const BlogList: React.FC = () => (
   <div className="page">
-    <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
-      <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+    <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '48px', flexWrap: 'nowrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
+      <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', flexShrink: 0 }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
         <span className="logo-text">OpenClaw</span>
         <div className="logo-dot" />
         <span className="logo-tag">Sverige</span>
       </div>
-      <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+      <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center', justifyContent: 'flex-end', flexGrow: 1 }}>
         <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
         <span className="nav-sep">|</span>
         <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
@@ -544,7 +544,7 @@ const BlogList: React.FC = () => (
           }}>1</span>
         </a>
       </div>
-      <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+      <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny" style={{ flexShrink: 0 }}>
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -688,13 +688,13 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
   return (
     <div className="page sticky-header-page" style={{ paddingTop: '48px', marginTop: '-48px' }}>
       {/* Site Header */}
-      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '40px' }}>
-        <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '48px', flexWrap: 'nowrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '40px' }}>
+        <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', flexShrink: 0 }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
           <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center', justifyContent: 'flex-end', flexGrow: 1 }}>
           <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
           <span className="nav-sep">|</span>
           <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
@@ -708,7 +708,7 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
             className="nav-bold"
           >Kontakt</a>
         </div>
-        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny" style={{ flexShrink: 0 }}>
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -811,13 +811,13 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="page">
-      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
-        <div ref={logoRef} className="logo-area reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '48px', flexWrap: 'nowrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
+        <div ref={logoRef} className="logo-area reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', flexShrink: 0 }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
           <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center', justifyContent: 'flex-end', flexGrow: 1 }}>
           <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
           <span className="nav-sep">|</span>
           <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
@@ -826,7 +826,7 @@ const LandingPage: React.FC = () => {
           <span className="nav-sep">|</span>
           <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold">Kontakt</a>
         </div>
-        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny" style={{ flexShrink: 0 }}>
           <span></span><span></span><span></span>
         </button>
       </div>

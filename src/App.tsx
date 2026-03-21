@@ -915,13 +915,13 @@ const PrivacyPage: React.FC = () => {
           <span className="logo-tag">Sverige</span>
         </div>
         <div className="desktop-nav" style={{ marginTop: '54px' }}>
-          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Share contact</a>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
           <span className="nav-sep">|</span>
-          <a href="/OpenClaw-Sverige/contact.vcf" download>Save contact</a>
+          <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
           <span className="nav-sep">|</span>
-          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR Code</a>
+          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR-kod</a>
           <span className="nav-sep">|</span>
-          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold">Contact</a>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold">Kontakt</a>
         </div>
         <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
           <span></span><span></span><span></span>

@@ -1,8 +1,11 @@
 import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-// Define the source directory with the AI generated markdown files
-const sourceDir = join(process.cwd(), '../Pathmaker/content/intelligence');
+const sourceDirs = [
+  join(process.cwd(), '../Pathmaker/content/intelligence'),
+  join(process.cwd(), '../Roials-Alpha/content/intelligence'),
+  join(process.cwd(), '../Hylten-Invest/content/insights')
+];
 const targetFile = join(process.cwd(), 'src/generatedBlogs.ts');
 
 function generateSlug(title) {
@@ -20,17 +23,27 @@ function randomReadTime() {
 const startDate = new Date('2026-01-25').getTime();
 const endDate = new Date('2026-03-21').getTime();
 
-const files = readdirSync(sourceDir).filter(f => f.endsWith('.md'));
-
 let validPosts = [];
-let idx = 0;
 
-for (const file of files) {
-  const content = readFileSync(join(sourceDir, file), 'utf8');
+for (const sourceDir of sourceDirs) {
+  let files;
+  try {
+    files = readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+  } catch (e) { continue; }
 
-  // Skip English articles and non-generated ones
-  // Our generated ones usually have "skriv på svenska" in filename or Swedish chars/words
-  if (!content.match(/(svenska|Sverige|OpenClaw|företag|att|på|för|med|och)/i) && !file.includes('svensk')) {
+  for (const file of files) {
+    const content = readFileSync(join(sourceDir, file), 'utf8');
+
+    // Skip English articles and non-generated ones
+    // Our generated ones usually have "skriv på svenska" in filename or Swedish chars/words
+    if (!content.match(/(svenska|Sverige|OpenClaw|företag|att|på|för|med|och)/i) && !file.includes('svensk')) {
+        continue;
+    }
+
+  // Double check it's not actually English with Swedish keywords scattered
+  const enlWords = content.match(/\b(the|and|this|that|with|from|are|have|which)\b/gi);
+  if (enlWords && enlWords.length > 20) {
+      console.log('Skipping ' + file + ' because it appears to be English.');
       continue;
   }
 
@@ -74,7 +87,8 @@ for (const file of files) {
     readTime: randomReadTime(),
     rawMarkdown: cleanedContent
   });
-}
+  } // End of file loop
+} // End of sourceDir loop
 
 // Sort posts by date for chronological display
 validPosts.sort((a, b) => b.dateValue - a.dateValue);

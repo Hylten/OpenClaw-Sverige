@@ -657,46 +657,49 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
 
   return (
     <div className="page" style={{ paddingTop: '48px', marginTop: '-48px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '48px 0', gap: '40px', flexWrap: 'wrap', width: '100%' }}>
-        <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
-          <span className="logo-text" style={{ fontSize: '20px', fontWeight: 600 }}>OpenClaw</span>
+      {/* Site Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', marginBottom: '60px' }}>
+        <div className="logo-area" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+          <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="desktop-nav" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+        <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '30px', alignItems: 'center' }}>
           <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
           <span className="nav-sep">|</span>
           <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
           <span className="nav-sep">|</span>
           <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR-kod</a>
           <span className="nav-sep">|</span>
-          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold" style={{ color: '#0dbb41', fontWeight: 700 }}>Kontakt</a>
+          <a 
+            href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="nav-bold"
+          >Kontakt</a>
         </div>
-        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
-          <span></span><span></span><span></span>
-        </button>
       </div>
 
-      {/* Discrete Gray WhatsApp Icon for Article */}
       <a 
-        href="https://wa.me/46701619978" 
-        target="_blank" 
+        href={WHATSAPP_URL} 
+        target="_blank"
         rel="noopener noreferrer"
         style={{
           position: 'fixed',
-          bottom: '32px',
-          right: '24px',
-          width: '40px',
-          height: '40px',
-          backgroundColor: '#f0f0f0',
+          bottom: '30px',
+          right: '30px',
+          backgroundColor: '#f5f5f5',
+          width: '36px',
+          height: '36px',
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: 10001,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-          opacity: 0.6,
-          transition: 'opacity 0.3s'
+          boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+          zIndex: 1000,
+          opacity: '0.6',
+          transition: 'all 0.3s ease',
+          textDecoration: 'none'
         }}
         onMouseEnter={e => e.currentTarget.style.opacity = '1'}
         onMouseLeave={e => e.currentTarget.style.opacity = '0.6'}

@@ -505,13 +505,13 @@ function useRoute() {
 
 const BlogList: React.FC = () => (
   <div className="page">
-    <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100 }}>
-      <div className="logo-area" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+    <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
+      <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
         <span className="logo-text">OpenClaw</span>
         <div className="logo-dot" />
         <span className="logo-tag">Sverige</span>
       </div>
-      <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '30px', alignItems: 'center' }}>
+      <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
         <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
         <span className="nav-sep">|</span>
         <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
@@ -688,13 +688,13 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
   return (
     <div className="page sticky-header-page" style={{ paddingTop: '48px', marginTop: '-48px' }}>
       {/* Site Header */}
-      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '20px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '40px' }}>
-        <div className="logo-area" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '40px' }}>
+        <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
           <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '20px', alignItems: 'center' }}>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
           <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
           <span className="nav-sep">|</span>
           <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
@@ -811,23 +811,23 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="page">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%' }}>
-        <div ref={logoRef} className="logo-area reveal" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+      <div className="site-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%', position: 'relative', zIndex: 100, marginBottom: '24px' }}>
+        <div ref={logoRef} className="logo-area reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
           <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" aria-label="Dela kontakt via WhatsApp">Dela kontakt</a>
-          <span className="nav-sep" aria-hidden="true">|</span>
-          <a href="/OpenClaw-Sverige/contact.vcf" download aria-label="Spara kontakt">Spara kontakt</a>
-          <span className="nav-sep" aria-hidden="true">|</span>
-          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }} aria-label="Visa QR-kod">QR-kod</a>
-          <span className="nav-sep" aria-hidden="true">|</span>
-          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold" aria-label="Kontakta via WhatsApp">Kontakt</a>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
+          <span className="nav-sep">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
+          <span className="nav-sep">|</span>
+          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR-kod</a>
+          <span className="nav-sep">|</span>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold">Kontakt</a>
         </div>
-        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Öppna meny">
-          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+          <span></span><span></span><span></span>
         </button>
       </div>
       <h1 ref={headlineRef} className="headline reveal">En AI-agent som arbetar. Inte väntar.</h1>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { blogPosts, BlogPost } from './blogData';
+import { generatedBlogPosts, generatedArticleContent } from './generatedBlogs';
 
 /* ═══════════════════════════════════════
    MARKDOWN CONTENT (inlined for zero-dep build)
@@ -349,6 +350,9 @@ Typisk tidsbesparing: 15 till 28 timmar per vecka. Kostnad: 300 till 2000 kronor
 Om du vill veta mer om hur du kan använda AI som egenföretagare är du välkommen att höra av dig via WhatsApp.`,
 };
 
+const allBlogPosts = [...blogPosts, ...generatedBlogPosts];
+const allArticleContent = { ...articleContent, ...generatedArticleContent };
+
 /* ═══════════════════════════════════════
    SIMPLE MARKDOWN RENDERER
    ═══════════════════════════════════════ */
@@ -487,7 +491,7 @@ const BlogList: React.FC = () => (
     <p className="subtitle" style={{ marginTop: '12px', marginBottom: '48px' }}>Artiklar om AI-agenter, automatisering och hur svenska företag kan arbeta smartare.</p>
 
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-      {blogPosts.map((post, i) => (
+      {allBlogPosts.map((post, i) => (
         <a
           key={post.slug}
           href={`#/blogg/${post.slug}`}
@@ -517,7 +521,11 @@ const BlogList: React.FC = () => (
       <div className="footer-content">
         <span>OpenClaw Sverige</span>
         <span className="footer-dot">·</span>
-        <a href="#" className="footer-link">Integritet &amp; Säkerhet</a>
+        <a href="#/integritet" className="footer-link">Integritet &amp; Säkerhet</a>
+        <span className="footer-dot">·</span>
+        <a href="https://hylten.github.io/Alpha/" target="_blank" rel="noopener noreferrer" className="footer-link">Roials Alpha</a>
+        <span className="footer-dot">·</span>
+        <a href="https://hylten.github.io/Venture-Studio/#apply" target="_blank" rel="noopener noreferrer" className="footer-link">Hyltén Venture Studio</a>
         <span className="footer-dot">·</span>
         <span>© 2025</span>
       </div>
@@ -530,8 +538,8 @@ const BlogList: React.FC = () => (
    ═══════════════════════════════════════ */
 
 const BlogArticle: React.FC<{ slug: string }> = ({ slug }) => {
-  const post = blogPosts.find(p => p.slug === slug);
-  const content = articleContent[slug];
+  const post = allBlogPosts.find(p => p.slug === slug);
+  const content = allArticleContent[slug];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -620,6 +628,12 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug }) => {
           <span className="footer-dot">·</span>
           <a href="#/blogg" className="footer-link">Blogg</a>
           <span className="footer-dot">·</span>
+          <a href="#/integritet" className="footer-link">Integritet &amp; Säkerhet</a>
+          <span className="footer-dot">·</span>
+          <a href="https://hylten.github.io/Alpha/" target="_blank" rel="noopener noreferrer" className="footer-link">Roials Alpha</a>
+          <span className="footer-dot">·</span>
+          <a href="https://hylten.github.io/Venture-Studio/#apply" target="_blank" rel="noopener noreferrer" className="footer-link">Hyltén Venture Studio</a>
+          <span className="footer-dot">·</span>
           <span>© 2025</span>
         </div>
       </footer>
@@ -696,7 +710,7 @@ const LandingPage: React.FC = () => {
       {/* Blog preview */}
       <div style={{ marginTop: '80px', paddingTop: '48px', borderTop: '1px solid rgba(26,26,26,0.06)' }}>
         <h3 style={{ fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(26,26,26,0.4)', marginBottom: '24px' }}>Från bloggen</h3>
-        {blogPosts.slice(0, 3).map(post => (
+        {allBlogPosts.slice(0, 3).map(post => (
           <a
             key={post.slug}
             href={`#/blogg/${post.slug}`}
@@ -719,7 +733,60 @@ const LandingPage: React.FC = () => {
           <span className="footer-dot">·</span>
           <a href="#/blogg" className="footer-link">Blogg</a>
           <span className="footer-dot">·</span>
-          <a href="#" className="footer-link">Integritet &amp; Säkerhet</a>
+          <a href="#/integritet" className="footer-link">Integritet &amp; Säkerhet</a>
+          <span className="footer-dot">·</span>
+          <a href="https://hylten.github.io/Alpha/" target="_blank" rel="noopener noreferrer" className="footer-link">Roials Alpha</a>
+          <span className="footer-dot">·</span>
+          <a href="https://hylten.github.io/Venture-Studio/#apply" target="_blank" rel="noopener noreferrer" className="footer-link">Hyltén Venture Studio</a>
+          <span className="footer-dot">·</span>
+          <span>© 2025</span>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════
+   PRIVACY PAGE
+   ═══════════════════════════════════════ */
+
+const PrivacyPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="page" style={{ paddingTop: '48px' }}>
+      <div className="logo-area" style={{ cursor: 'pointer' }} onClick={() => { window.location.hash = ''; }}>
+        <span className="logo-text">OpenClaw</span>
+        <div className="logo-dot" />
+        <span className="logo-tag">Sverige</span>
+      </div>
+
+      <div style={{ marginTop: '48px', marginBottom: '24px' }}>
+        <a href="#" style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Tillbaka</a>
+      </div>
+
+      <article style={{ marginBottom: '80px', maxWidth: '640px' }}>
+        <h1 style={{ fontSize: '32px', fontWeight: 600, color: '#1a1a1a', marginBottom: '24px', letterSpacing: '-0.02em' }}>Integritet &amp; Säkerhet</h1>
+        
+        <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#1a1a1a', marginTop: '40px', marginBottom: '12px' }}>GDPR och lokal data</h3>
+        <p style={{ fontSize: '15px', color: 'rgba(26,26,26,0.7)', lineHeight: '1.7', marginBottom: '16px' }}>
+          För oss på OpenClaw Sverige är din dataintegritet prioriterad. Våra system och AI-agenter driftsätts med lokal-först arkitektur (local-first), vilket minimerar risken att företagsdata läcker utanför din kontroll. All eventuell personuppgiftshantering vilar på den allmänna dataskyddsförordningens (GDPR) krav på transparens, minimering och datakontroll. Din konfidentiella information används aldrig för extern modellträning. Detta ger dig full suveränitet över affärskritiska flöden.
+        </p>
+
+        <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#1a1a1a', marginTop: '40px', marginBottom: '12px' }}>Kontakt</h3>
+        <p style={{ fontSize: '15px', color: 'rgba(26,26,26,0.7)', lineHeight: '1.7', marginBottom: '16px' }}>
+          Har du frågor angående vår personuppgiftshantering, säkerhet eller hur vi tillämpar GDPR inom dina AI-arbetsflöden, tveka inte att kontakta oss direkt på:
+        </p>
+        <p style={{ fontSize: '15px', color: '#1a1a1a', fontWeight: 500 }}>
+          <a href="mailto:jonas@roials.co" style={{ color: 'inherit', textDecoration: 'underline' }}>jonas@roials.co</a>
+        </p>
+      </article>
+
+      <footer className="site-footer">
+        <div className="footer-content">
+          <span>OpenClaw Sverige</span>
           <span className="footer-dot">·</span>
           <span>© 2025</span>
         </div>
@@ -759,6 +826,8 @@ const App: React.FC = () => {
 
       {route === '#/blogg' ? (
         <BlogList />
+      ) : route === '#/integritet' ? (
+        <PrivacyPage />
       ) : blogArticleMatch ? (
         <BlogArticle slug={blogArticleMatch[1]} />
       ) : (

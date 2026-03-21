@@ -32,7 +32,12 @@ for (const sourceDir of sourceDirs) {
   } catch (e) { continue; }
 
   for (const file of files) {
-    const content = readFileSync(join(sourceDir, file), 'utf8');
+    let content = readFileSync(join(sourceDir, file), 'utf8');
+
+    // Remove unwanted CTAs and fix author branding
+    content = content.replace(/Contact for stewardship discussion/gi, '');
+    content = content.replace(/Hylten-Invest/gi, 'OpenClaw Sverige');
+    content = content.replace(/Roials-Capital/gi, 'Roials Alpha');
 
     // Skip English articles and non-generated ones
     // Our generated ones usually have "skriv på svenska" in filename or Swedish chars/words
@@ -41,7 +46,7 @@ for (const sourceDir of sourceDirs) {
     }
 
   // Double check it's not actually English with Swedish keywords scattered
-  const enlWords = content.match(/\b(the|and|this|that|with|from|are|have|which)\b/gi);
+  const enlWords = content.match(/\b(the|and|this|That|with|from|are|have|which)\b/gi);
   if (enlWords && enlWords.length > 20) {
       console.log('Skipping ' + file + ' because it appears to be English.');
       continue;

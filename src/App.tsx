@@ -501,19 +501,48 @@ function useRoute() {
 
 const BlogList: React.FC = () => (
   <div className="page">
-    <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
-      <div className="logo-area" style={{ paddingTop: '48px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%' }}>
+      <div className="logo-area" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
         <span className="logo-text">OpenClaw</span>
         <div className="logo-dot" />
         <span className="logo-tag">Sverige</span>
       </div>
-      <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
-        <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
-        <span className="text-black/10">|</span>
-        <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
-        <span className="text-black/10">|</span>
-        <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+      <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '30px', alignItems: 'center' }}>
+        <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
+        <span className="nav-sep">|</span>
+        <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
+        <span className="nav-sep">|</span>
+        <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR-kod</a>
+        <span className="nav-sep">|</span>
+        <a 
+          href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="nav-bold whatsapp-premium"
+          style={{ 
+            color: '#0dbb41', 
+            fontWeight: 700, 
+            position: 'relative',
+            animation: 'breathePulse 3s ease-in-out infinite'
+          }}
+        >
+          Kontakt
+          <span style={{
+            position: 'absolute',
+            top: '-8px',
+            right: '-12px',
+            background: '#11d24a',
+            color: 'white',
+            fontSize: '9px',
+            padding: '2px 5px',
+            borderRadius: '10px',
+            animation: 'badgePulse 1.5s infinite ease-in-out'
+          }}>1</span>
+        </a>
       </div>
+      <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
     <div style={{ marginTop: '48px', marginBottom: '24px' }}>
@@ -627,21 +656,53 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
   const WHATSAPP_URL = `https://wa.me/46701619978?text=${encodeURIComponent('Hej! Jag läste er artikel om "' + post.title + '" och vill veta mer.')}`;
 
   return (
-    <div className="page">
-      <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
-        <div className="logo-area" style={{ paddingTop: '48px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
-          <span className="logo-text">OpenClaw</span>
+    <div className="page" style={{ paddingTop: '48px', marginTop: '-48px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '48px 0', gap: '40px', flexWrap: 'wrap', width: '100%' }}>
+        <div className="logo-area" style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+          <span className="logo-text" style={{ fontSize: '20px', fontWeight: 600 }}>OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
-          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
-          <span className="text-black/10">|</span>
-          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
-          <span className="text-black/10">|</span>
-          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        <div className="desktop-nav" style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Dela kontakt</a>
+          <span className="nav-sep">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download>Spara kontakt</a>
+          <span className="nav-sep">|</span>
+          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR-kod</a>
+          <span className="nav-sep">|</span>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold" style={{ color: '#0dbb41', fontWeight: 700 }}>Kontakt</a>
         </div>
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+
+      {/* Discrete Gray WhatsApp Icon for Article */}
+      <a 
+        href="https://wa.me/46701619978" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '32px',
+          right: '24px',
+          width: '40px',
+          height: '40px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10001,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+          opacity: 0.6,
+          transition: 'opacity 0.3s'
+        }}
+        onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+        onMouseLeave={e => e.currentTarget.style.opacity = '0.6'}
+      >
+        <svg fill="#666" width="20" height="20" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
 
       <div style={{ marginTop: '48px', marginBottom: '24px' }}>
         <a href="#/blogg" onClick={(e) => { e.preventDefault(); window.triggerTransition('#/blogg', false); }} style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Alla artiklar</a>
@@ -715,19 +776,24 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="page">
-      <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
-        <div ref={logoRef} className="logo-area reveal" style={{ paddingTop: '48px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '48px', marginTop: '-48px', gap: '40px', flexWrap: 'wrap', width: '100%' }}>
+        <div ref={logoRef} className="logo-area reveal" style={{ paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span className="logo-text">OpenClaw</span>
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px]">
-          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
-          <span className="text-black/10">|</span>
-          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
-          <span className="text-black/10">|</span>
-          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        <div className="desktop-nav" style={{ marginTop: '30px', display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" aria-label="Dela kontakt via WhatsApp">Dela kontakt</a>
+          <span className="nav-sep" aria-hidden="true">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download aria-label="Spara kontakt">Spara kontakt</a>
+          <span className="nav-sep" aria-hidden="true">|</span>
+          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }} aria-label="Visa QR-kod">QR-kod</a>
+          <span className="nav-sep" aria-hidden="true">|</span>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold" aria-label="Kontakta via WhatsApp">Kontakt</a>
         </div>
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Öppna meny">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
       </div>
       <h1 ref={headlineRef} className="headline reveal">En AI-agent som arbetar. Inte väntar.</h1>
       <p ref={subtitleRef} className="subtitle reveal">
@@ -816,13 +882,18 @@ const PrivacyPage: React.FC = () => {
           <div className="logo-dot" />
           <span className="logo-tag">Sverige</span>
         </div>
-        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
-          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
-          <span className="text-black/10">|</span>
-          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
-          <span className="text-black/10">|</span>
-          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        <div className="desktop-nav" style={{ marginTop: '54px' }}>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer">Share contact</a>
+          <span className="nav-sep">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download>Save contact</a>
+          <span className="nav-sep">|</span>
+          <a href="#qr" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('showQr')); }}>QR Code</a>
+          <span className="nav-sep">|</span>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" className="nav-bold">Contact</a>
         </div>
+        <button className="mobile-hamburger" onClick={() => { if ((window as any).__openMobileMenu) (window as any).__openMobileMenu(); }} aria-label="Meny">
+          <span></span><span></span><span></span>
+        </button>
       </div>
 
       <div style={{ marginTop: '48px', marginBottom: '24px' }}>
@@ -898,9 +969,47 @@ const App: React.FC = () => {
   // Route matching
   const blogArticleMatch = route.match(/^#\/blogg\/(.+)$/);
 
+  const [showQrModal, setShowQrModal] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  useEffect(() => {
+    const h = () => setShowQrModal(true);
+    window.addEventListener("showQr", h as any);
+    return () => window.removeEventListener("showQr", h as any);
+  }, []);
+
+  // Expose mobile menu trigger globally so child components can use it
+  (window as any).__openMobileMenu = () => setShowMobileMenu(true);
+
   return (
     <>
       <StarTransition active={transState.active} isFast={transState.isFast} />
+      
+      {/* Mobile Menu Drawer */}
+      {showMobileMenu && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(255,255,255,0.97)', zIndex: 9998, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '32px' }} onClick={() => setShowMobileMenu(false)}>
+          <button style={{ position: 'absolute', top: '24px', right: '24px', color: 'rgba(26,26,26,0.5)', cursor: 'pointer', border: 'none', background: 'none', fontSize: '20px' }} onClick={() => setShowMobileMenu(false)}>✕</button>
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: 'rgba(26,26,26,0.5)', textDecoration: 'none' }}>Share contact</a>
+          <a href="/OpenClaw-Sverige/contact.vcf" download style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: 'rgba(26,26,26,0.5)', textDecoration: 'none' }}>Save contact</a>
+          <button onClick={() => { setShowMobileMenu(false); setShowQrModal(true); }} style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: 'rgba(26,26,26,0.5)', border: 'none', background: 'none', cursor: 'pointer' }}>QR Code</button>
+          <a href="https://wa.me/46701619978?text=Hej%20Jonas,%20jag%20skulle%20vilja%20veta%20mer%20om%20OpenClaw%20Sverige." target="_blank" rel="noopener noreferrer" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: '#1a1a1a', textDecoration: 'none', fontWeight: 'bold' }}>Contact</a>
+          <div style={{ width: '48px', height: '1px', background: 'rgba(26,26,26,0.1)', margin: '8px 0' }}></div>
+          <a href="#/blogg" onClick={() => setShowMobileMenu(false)} style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>Blogg</a>
+          <a href="#/integritet" onClick={() => setShowMobileMenu(false)} style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '6px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>Integritet</a>
+        </div>
+      )}
+
+      {showQrModal && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', backdropFilter: 'blur(4px)' }} onClick={() => setShowQrModal(false)}>
+           <div style={{ backgroundColor: '#fff', padding: '32px', borderRadius: '4px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', position: 'relative' }} onClick={e => e.stopPropagation()}>
+              <button style={{ position: 'absolute', top: '16px', right: '16px', color: 'rgba(26,26,26,0.5)', cursor: 'pointer', border: 'none', background: 'none', fontSize: '16px' }} onClick={() => setShowQrModal(false)}>✕</button>
+              <h3 style={{ textAlign: 'center', color: 'rgba(26,26,26,0.8)', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '12px', fontWeight: 'bold', marginBottom: '24px' }}>OpenClaw Sverige</h3>
+              <div style={{ backgroundColor: '#fff', padding: '8px' }}>
+                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://hylten.github.io/OpenClaw-Sverige/" alt="QR Code" />
+              </div>
+           </div>
+        </div>
+      )}
+
       {!skipIntro && !introComplete && route === '' && (
         <StarTransition active={true} isFast={false} />
       )}
@@ -914,6 +1023,23 @@ const App: React.FC = () => {
       ) : (
         <LandingPage />
       )}
+      {/* 
+          Global floating button removed from here. 
+          Discrete icons added directly inside BlogList and BlogArticle as requested.
+      */}
+
+      <style>{`
+        @keyframes breathePulse {
+          0% { text-shadow: 0 0 0px rgba(17,210,74,0.0); box-shadow: 0 0 0px rgba(17,210,74,0.0); }
+          50% { text-shadow: 0 0 8px rgba(17,210,74,0.4); box-shadow: 0 0 20px rgba(17,210,74,0.4); }
+          100% { text-shadow: 0 0 0px rgba(17,210,74,0.0); box-shadow: 0 0 0px rgba(17,210,74,0.0); }
+        }
+        @keyframes badgePulse {
+          0% { transform: scale(1); opacity: 0.8; }
+          50% { transform: scale(1.2); opacity: 1; }
+          100% { transform: scale(1); opacity: 0.8; }
+        }
+      `}</style>
     </>
   );
 };

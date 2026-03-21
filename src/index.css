@@ -568,3 +568,85 @@ button {
   50% { transform: scale(1) rotate(180deg); }
   100% { transform: scale(0) rotate(270deg); }
 }
+
+
+/* ═══════════════════════════════════════
+   DESKTOP-ONLY NAV (hidden on mobile)
+   ═══════════════════════════════════════ */
+
+.desktop-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(26, 26, 26, 0.3);
+}
+
+.desktop-nav a, .desktop-nav button {
+  transition: color 0.5s ease;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.desktop-nav a:hover, .desktop-nav button:hover {
+  color: rgba(26, 26, 26, 0.6);
+}
+
+.desktop-nav .nav-sep {
+  color: rgba(26, 26, 26, 0.1);
+}
+
+.desktop-nav .nav-bold {
+  font-weight: bold;
+}
+
+.desktop-nav .nav-bold:hover {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   MOBILE HAMBURGER BUTTON
+   ═══════════════════════════════════════ */
+
+.mobile-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin-top: 54px;
+}
+
+.mobile-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: rgba(26, 26, 26, 0.5);
+  transition: all 0.3s ease;
+}
+
+.mobile-hamburger span:last-child {
+  width: 14px;
+}
+
+@media (max-width: 767px) {
+  .mobile-hamburger {
+    display: flex;
+  }
+}

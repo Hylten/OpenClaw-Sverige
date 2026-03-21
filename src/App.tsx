@@ -458,6 +458,30 @@ const IntroSequence: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
 };
 
 /* ═══════════════════════════════════════
+   STAR TRANSITION ANIMATION
+   ═══════════════════════════════════════ */
+
+declare global {
+  interface Window {
+    triggerTransition: (url: string, isBlank?: boolean) => void;
+  }
+}
+
+const StarTransition: React.FC<{ active: boolean; isFast: boolean }> = ({ active, isFast }) => {
+  if (!active) return null;
+  return (
+    <div className={`intro-overlay fade-in ${isFast ? 'fast-anim' : 'slow-anim'}`}>
+      <div className="star-container">
+        <div className="star-line line1"></div>
+        <div className="star-line line2"></div>
+        <div className="star-line line3"></div>
+        <div className="star-line line4"></div>
+      </div>
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════
    SIMPLE HASH ROUTER
    ═══════════════════════════════════════ */
 
@@ -477,14 +501,23 @@ function useRoute() {
 
 const BlogList: React.FC = () => (
   <div className="page">
-    <div className="logo-area" style={{ cursor: 'pointer' }} onClick={() => { window.location.hash = ''; }}>
-      <span className="logo-text">OpenClaw</span>
-      <div className="logo-dot" />
-      <span className="logo-tag">Sverige</span>
+    <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
+      <div className="logo-area" style={{ paddingTop: '48px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+        <span className="logo-text">OpenClaw</span>
+        <div className="logo-dot" />
+        <span className="logo-tag">Sverige</span>
+      </div>
+      <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
+        <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
+        <span className="text-black/10">|</span>
+        <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
+        <span className="text-black/10">|</span>
+        <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+      </div>
     </div>
 
     <div style={{ marginTop: '48px', marginBottom: '24px' }}>
-      <a href="#" style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Tillbaka till startsidan</a>
+      <a href="#" onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }} style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Tillbaka till startsidan</a>
     </div>
 
     <h1 className="headline" style={{ fontSize: '32px', marginTop: '16px' }}>Blogg</h1>
@@ -495,6 +528,7 @@ const BlogList: React.FC = () => (
         <a
           key={post.slug}
           href={`#/blogg/${post.slug}`}
+          onClick={(e) => { e.preventDefault(); window.triggerTransition(`#/blogg/${post.slug}`, false); }}
           style={{
             display: 'block',
             padding: '32px 0',
@@ -537,7 +571,8 @@ const BlogList: React.FC = () => (
    BLOG ARTICLE PAGE
    ═══════════════════════════════════════ */
 
-const BlogArticle: React.FC<{ slug: string }> = ({ slug }) => {
+const BlogArticle: React.FC<{ slug: string }> = ({ slug: encodedSlug }) => {
+  const slug = decodeURIComponent(encodedSlug);
   const post = allBlogPosts.find(p => p.slug === slug);
   const content = allArticleContent[slug];
 
@@ -584,7 +619,7 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug }) => {
     return (
       <div className="page" style={{ paddingTop: '48px' }}>
         <p>Artikeln kunde inte hittas.</p>
-        <a href="#/blogg">Tillbaka till bloggen</a>
+        <a href="#/blogg" onClick={(e) => { e.preventDefault(); window.triggerTransition('#/blogg', false); }}>Tillbaka till bloggen</a>
       </div>
     );
   }
@@ -593,14 +628,23 @@ const BlogArticle: React.FC<{ slug: string }> = ({ slug }) => {
 
   return (
     <div className="page">
-      <div className="logo-area" style={{ cursor: 'pointer' }} onClick={() => { window.location.hash = ''; }}>
-        <span className="logo-text">OpenClaw</span>
-        <div className="logo-dot" />
-        <span className="logo-tag">Sverige</span>
+      <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
+        <div className="logo-area" style={{ paddingTop: '48px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+          <span className="logo-text">OpenClaw</span>
+          <div className="logo-dot" />
+          <span className="logo-tag">Sverige</span>
+        </div>
+        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
+          <span className="text-black/10">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
+          <span className="text-black/10">|</span>
+          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        </div>
       </div>
 
       <div style={{ marginTop: '48px', marginBottom: '24px' }}>
-        <a href="#/blogg" style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Alla artiklar</a>
+        <a href="#/blogg" onClick={(e) => { e.preventDefault(); window.triggerTransition('#/blogg', false); }} style={{ fontSize: '13px', color: 'rgba(26,26,26,0.4)', textDecoration: 'none' }}>&larr; Alla artiklar</a>
       </div>
 
       <article style={{ marginBottom: '80px' }}>
@@ -671,10 +715,19 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="page">
-      <div ref={logoRef} className="logo-area reveal">
-        <span className="logo-text">OpenClaw</span>
-        <div className="logo-dot" />
-        <span className="logo-tag">Sverige</span>
+      <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
+        <div ref={logoRef} className="logo-area reveal" style={{ paddingTop: '48px' }}>
+          <span className="logo-text">OpenClaw</span>
+          <div className="logo-dot" />
+          <span className="logo-tag">Sverige</span>
+        </div>
+        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px]">
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
+          <span className="text-black/10">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
+          <span className="text-black/10">|</span>
+          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        </div>
       </div>
       <h1 ref={headlineRef} className="headline reveal">En AI-agent som arbetar. Inte väntar.</h1>
       <p ref={subtitleRef} className="subtitle reveal">
@@ -757,10 +810,19 @@ const PrivacyPage: React.FC = () => {
 
   return (
     <div className="page" style={{ paddingTop: '48px' }}>
-      <div className="logo-area" style={{ cursor: 'pointer' }} onClick={() => { window.location.hash = ''; }}>
-        <span className="logo-text">OpenClaw</span>
-        <div className="logo-dot" />
-        <span className="logo-tag">Sverige</span>
+      <div className="flex justify-between items-start pt-[48px] -mt-[48px]">
+        <div className="logo-area" style={{ paddingTop: '48px', cursor: 'pointer' }} onClick={(e) => { e.preventDefault(); window.triggerTransition('#/', false); }}>
+          <span className="logo-text">OpenClaw</span>
+          <div className="logo-dot" />
+          <span className="logo-tag">Sverige</span>
+        </div>
+        <div className="hidden md:flex gap-6 text-[10px] uppercase tracking-[4px] text-black/30 mt-[54px] pointer-events-auto">
+          <a href="https://wa.me/?text=https://hylten.github.io/OpenClaw-Sverige/" target="_blank" rel="noopener noreferrer" className="hover:text-black/60 transition-colors duration-500">Share contact</a>
+          <span className="text-black/10">|</span>
+          <a href="/OpenClaw-Sverige/contact.vcf" download className="hover:text-black/60 transition-colors duration-500">Save contact</a>
+          <span className="text-black/10">|</span>
+          <a href="#qr" className="hover:text-black/60 transition-colors duration-500">QR Code</a>
+        </div>
       </div>
 
       <div style={{ marginTop: '48px', marginBottom: '24px' }}>
@@ -802,12 +864,21 @@ const PrivacyPage: React.FC = () => {
 const App: React.FC = () => {
   const [introComplete, setIntroComplete] = useState(false);
   const [skipIntro, setSkipIntro] = useState(false);
+  const [transState, setTransState] = useState({ active: false, isFast: false });
   const route = useRoute();
 
   useEffect(() => {
     const alreadySeen = sessionStorage.getItem('openclaw_intro_seen');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (alreadySeen || reducedMotion) { setSkipIntro(true); setIntroComplete(true); }
+
+    window.triggerTransition = (url, isBlank = false) => {
+      setTransState({ active: true, isFast: true });
+      setTimeout(() => {
+        if (isBlank) { window.open(url, '_blank'); } else { window.location.href = url; window.location.reload(); }
+        setTransState({ active: false, isFast: false });
+      }, 1500);
+    };
   }, []);
 
   const handleIntroComplete = useCallback(() => {
@@ -815,13 +886,23 @@ const App: React.FC = () => {
     setIntroComplete(true);
   }, []);
 
+  useEffect(() => {
+    if (!skipIntro && !introComplete && route === '') {
+      const timer = setTimeout(() => {
+        handleIntroComplete();
+      }, 2800);
+      return () => clearTimeout(timer);
+    }
+  }, [skipIntro, introComplete, route, handleIntroComplete]);
+
   // Route matching
   const blogArticleMatch = route.match(/^#\/blogg\/(.+)$/);
 
   return (
     <>
+      <StarTransition active={transState.active} isFast={transState.isFast} />
       {!skipIntro && !introComplete && route === '' && (
-        <IntroSequence onComplete={handleIntroComplete} />
+        <StarTransition active={true} isFast={false} />
       )}
 
       {route === '#/blogg' ? (

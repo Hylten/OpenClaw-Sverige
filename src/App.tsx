@@ -716,51 +716,6 @@ const BlogArticle: React.FC = () => {
     );
   }
 
-  return (
-    <Helmet>
-      <title>{post.title} | OpenClaw Sverige</title>
-      <meta name="description" content={post.description} />
-      <meta property="og:title" content={post.title} />
-      <meta property="og:description" content={post.description} />
-      <meta property="og:type" content="article" />
-      <link rel="canonical" href={`https://hylten.github.io/OpenClaw-Sverige/blogg/${post.slug}`} />
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "headline": post.title,
-          "description": post.description,
-          "author": { "@type": "Organization", "name": "OpenClaw Sverige" },
-          "publisher": { "@type": "Organization", "name": "OpenClaw Sverige" },
-          "datePublished": post.date,
-          "dateModified": post.date,
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": `https://hylten.github.io/OpenClaw-Sverige/blogg/${post.slug}`
-          },
-          "inLanguage": "sv-SE"
-        })}
-      </script>
-    </Helmet>
-  );
-
-      return () => {
-        document.title = 'OpenClaw Sverige — Din AI-agent';
-        const ld = document.querySelector('script[data-blog-ld]');
-        if (ld) ld.remove();
-      };
-    }
-  }, [slug, post]);
-
-  if (!post || !content) {
-    return (
-      <div className="page" style={{ paddingTop: '48px' }}>
-        <p>Artikeln kunde inte hittas.</p>
-        <Link to="/blogg">Tillbaka till bloggen</Link>
-      </div>
-    );
-  }
-
   const WHATSAPP_URL = `https://wa.me/46701619978?text=${encodeURIComponent('Hej! Jag läste er artikel om "' + post.title + '" och vill veta mer.')}`;
 
   return (
@@ -1175,7 +1130,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/blogg" element={<BlogList />} />
-        <Route path="/blogg/:slug" element={<BlogArticle slug="" />} />
+        <Route path="/blogg/:slug" element={<BlogArticle />} />
         <Route path="/integritet" element={<PrivacyPage />} />
         <Route path="/*" element={<LandingPage />} />
       </Routes>

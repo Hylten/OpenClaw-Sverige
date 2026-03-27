@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="500" height="280">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;display=swap');
+      .handwritten { font-family: 'Caveat', cursive; fill: #2d3748; }
+      .label { font-size: 13px; fill: #4a5568; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="280" fill="#fafafa"/>
+  
+  <!-- Title -->
+  <text x="250" y="30" class="handwritten" font-size="20" text-anchor="middle" fill="#1a202c" font-weight="bold">Vad en AI-agent kan hjälpa till med</text>
+  
+  <!-- Category 1: Försäljning -->
+  <g transform="translate(30, 55)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#fff5f5" stroke="#fc8181" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#c53030" font-weight="bold">Försäljning</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#feb2b2" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Sammanställa leads</text>
+    <text x="15" y="70" class="label">• Skriva offerter</text>
+    <text x="15" y="88" class="label">• Uppdatera CRM</text>
+  </g>
+  
+  <!-- Category 2: Administration -->
+  <g transform="translate(180, 55)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#ebf8ff" stroke="#4299e1" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#2b6cb0" font-weight="bold">Administration</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#90cdf4" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Mejlhantering</text>
+    <text x="15" y="70" class="label">• Skriva protokoll</text>
+    <text x="15" y="88" class="label">• Dokumentrutiner</text>
+  </g>
+  
+  <!-- Category 3: Ekonomi -->
+  <g transform="translate(330, 55)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#f0fff4" stroke="#48bb78" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#276749" font-weight="bold">Ekonomi</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#9ae6b4" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Sammanställa siffror</text>
+    <text x="15" y="70" class="label">• Skapa rapporter</text>
+    <text x="15" y="88" class="label">• Påminnelser</text>
+  </g>
+  
+  <!-- Category 4: Research -->
+  <g transform="translate(30, 160)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#faf5ff" stroke="#9f7aea" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#6b46c1" font-weight="bold">Research</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#d6bcfa" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Samla information</text>
+    <text x="15" y="70" class="label">• Jämföra källor</text>
+    <text x="15" y="88" class="label">• Analysera data</text>
+  </g>
+  
+  <!-- Category 5: Kundtjänst -->
+  <g transform="translate(180, 160)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#fffaf0" stroke="#ed8936" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#c05621" font-weight="bold">Kundtjänst</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#fbd38d" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Svara på frågor</text>
+    <text x="15" y="70" class="label">• Triage av ärenden</text>
+    <text x="15" y="88" class="label">• Dygnet runt</text>
+  </g>
+  
+  <!-- Category 6: Schemaläggning -->
+  <g transform="translate(330, 160)">
+    <rect x="0" y="0" width="140" height="90" rx="10" fill="#e6fffa" stroke="#38b2ac" stroke-width="2"/>
+    <text x="70" y="22" class="handwritten" font-size="15" text-anchor="middle" fill="#234e52" font-weight="bold">Schemaläggning</text>
+    <line x1="15" y1="32" x2="125" y2="32" stroke="#81e6d9" stroke-width="1"/>
+    <text x="15" y="52" class="label">• Lägga in möten</text>
+    <text x="15" y="70" class="label">• Påminnelser</text>
+    <text x="15" y="88" class="label">• Planera veckan</text>
+  </g>
+  
+  <!-- Decorative dots -->
+  <circle cx="15" cy="130" r="4" fill="#e2e8f0"/>
+  <circle cx="485" cy="130" r="4" fill="#e2e8f0"/>
+  <circle cx="15" cy="230" r="4" fill="#e2e8f0"/>
+  <circle cx="485" cy="230" r="4" fill="#e2e8f0"/>
+</svg>

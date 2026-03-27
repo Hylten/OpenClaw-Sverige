@@ -30,6 +30,10 @@ En AI-agent har alltså två grundegenskaper:
 
 Man kan beskriva det som att du inte bara ger den ett svar att producera, utan snarare ett ansvar att ta hand om.
 
+![Skillnaden mellan chatbot och AI-agent](/OpenClaw-Sverige/images/excalidraw/chatbot-vs-agent.svg)
+
+*Figur 1: Chatboten svarar reaktivt. AI-agenten agerar proaktivt.*
+
 ## Varför kallas det autonom AI
 
 När man pratar om autonom AI syftar man på system som kan göra mer än att bara generera text. Autonom innebär inte att AI agerar fritt eller okontrollerat, utan att den kan:
@@ -75,6 +79,10 @@ Den använder AI-modellen, interna verktyg eller externa system för att lösa u
 ### 4. Den kontrollerar sitt eget resultat
 I stället för att ge dig första utkastet kan agenten göra om och förbättra tills instruktionerna uppfylls.
 
+![AI-agent arbetsflöde](/OpenClaw-Sverige/images/excalidraw/ai-agent-workflow.svg)
+
+*Figur 2: AI-agenten bryter ned uppdraget i flera steg och genomför dem systematiskt.*
+
 ## Vad kan en AI-agent hjälpa till med
 
 En AI-agent kan användas i många typer av arbetssituationer, men det handlar oftast om uppgifter som är upprepade, administrativa, text- eller dataintensiva, tydligt definierade, och som inte kräver mänskliga relationer eller bedömning av känslor.
@@ -97,6 +105,16 @@ En AI-agent kan användas i många typer av arbetssituationer, men det handlar o
 - påminna teamet om saknade underlag
 
 En AI-agent ersätter inte en kollega, men kan ofta ta hand om de delar av arbetet som ingen egentligen vill lägga tid på.
+
+![AI-agentens kompetenser](/OpenClaw-Sverige/images/excalidraw/ai-agent-capabilities.svg)
+
+*Figur 3: Exempel på områden där AI-agenter kan hjälpa till.*
+
+## En AI-agent arbetar dygnet runt
+
+![AI-agent alltid på](/OpenClaw-Sverige/images/excalidraw/ai-agent-always-on.svg)
+
+*Figur 4: Till skillnad från en anställd kan AI-agenten arbeta dygnet runt utan pauser.*
 
 ## Vad en AI-agent inte kan göra
 

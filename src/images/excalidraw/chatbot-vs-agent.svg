@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&amp;display=swap');
+      .handdrawn { font-family: 'Caveat', cursive; font-size: 14px; fill: #2d3748; }
+      .title { font-size: 22px; font-weight: bold; fill: #1a1a2e; }
+      .subtitle { font-size: 16px; fill: #4a5568; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#fafafa"/>
+  
+  <!-- Speech bubble left (chatbot) -->
+  <path d="M 60 80 Q 40 80, 40 100 L 40 140 Q 40 160, 60 160 L 80 160 L 75 175 L 85 160 L 120 160 Q 140 160, 140 140 L 140 100 Q 140 80, 120 80 Z" 
+        fill="white" stroke="#cbd5e0" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Robot face left -->
+  <circle cx="90" cy="115" r="20" fill="#e2e8f0" stroke="#a0aec0" stroke-width="2"/>
+  <circle cx="83" cy="110" r="4" fill="#2d3748"/>
+  <circle cx="97" cy="110" r="4" fill="#2d3748"/>
+  <rect x="82" y="120" width="16" height="3" rx="1.5" fill="#2d3748"/>
+  
+  <!-- Text left -->
+  <text x="200" y="200" class="title" text-anchor="middle">Svarar</text>
+  <text x="200" y="225" class="subtitle" text-anchor="middle">en fråga i taget</text>
+  <text x="90" y="200" class="handdrawn" text-anchor="middle">Chatbot</text>
+  
+  <!-- Arrow -->
+  <path d="M 160 120 L 240 120" stroke="#718096" stroke-width="2" stroke-dasharray="8,4" fill="none"/>
+  <polygon points="240,115 250,120 240,125" fill="#718096"/>
+  
+  <!-- Speech bubble right (AI agent) -->
+  <path d="M 260 80 Q 240 80, 240 100 L 240 140 Q 240 160, 260 160 L 315 160 L 310 175 L 320 160 L 360 160 Q 380 160, 380 140 L 380 100 Q 380 80, 360 80 Z" 
+        fill="white" stroke="#3182ce" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Robot face right with gears -->
+  <circle cx="310" cy="115" r="22" fill="#ebf8ff" stroke="#3182ce" stroke-width="2"/>
+  <circle cx="302" cy="110" r="4" fill="#2b6cb0"/>
+  <circle cx="318" cy="110" r="4" fill="#2b6cb0"/>
+  <path d="M 300 122 Q 310 128, 320 122" stroke="#2b6cb0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Small gears -->
+  <circle cx="355" cy="90" r="8" fill="none" stroke="#4299e1" stroke-width="2"/>
+  <circle cx="355" cy="90" r="3" fill="#4299e1"/>
+  
+  <circle cx="365" cy="105" r="6" fill="none" stroke="#4299e1" stroke-width="1.5"/>
+  <circle cx="365" cy="105" r="2" fill="#4299e1"/>
+  
+  <text x="310" y="200" class="handdrawn" text-anchor="middle" fill="#2b6cb0">AI-agent</text>
+  
+  <!-- Bottom comparison -->
+  <rect x="50" y="240" width="130" height="45" rx="8" fill="#fff5f5" stroke="#fc8181" stroke-width="1.5"/>
+  <text x="115" y="260" class="handdrawn" text-anchor="middle" fill="#c53030">Reaktiv</text>
+  <text x="115" y="278" class="handdrawn" text-anchor="middle" fill="#c53030">Väntar på input</text>
+  
+  <rect x="220" y="240" width="130" height="45" rx="8" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.5"/>
+  <text x="285" y="260" class="handdrawn" text-anchor="middle" fill="#2b6cb0">Proaktiv</text>
+  <text x="285" y="278" class="handdrawn" text-anchor="middle" fill="#2b6cb0">Agerrar själv</text>
+</svg>

@@ -17,6 +17,14 @@ export const blogPosts: BlogPost[] = [
     keywords: ['vad är AI-agent', 'AI-agent förklaring', 'hur fungerar AI-agent', 'AI för nybörjare'],
   },
   {
+    slug: 'vad-ar-en-ai-agent-excalidraw',
+    title: 'Vad är en AI-agent? (Med illustrationer)',
+    description: 'En visuell förklaring av AI-agenter med illustrationer skapade i Excalidraw. Lär dig skillnaden mellan chatbot och AI-agent.',
+    date: '2026-03-27',
+    readTime: '10 min',
+    keywords: ['AI-agent illustration', 'vad är AI-agent', 'AI-agent visualisering'],
+  },
+  {
     slug: '5-arbetsuppgifter-ai-agent',
     title: '5 arbetsuppgifter som en AI-agent kan ta över redan idag',
     description: 'Mejl, research, schemaläggning, kundtjänst och rapportering. Konkreta exempel på hur AI-agenter sparar tid för svenska företagare.',
